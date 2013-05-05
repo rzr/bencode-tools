@@ -1101,6 +1101,25 @@ static void cmp_tests(void)
 	ben_free(c);
 
 	ben_free(b);
+
+	b = ben_str("b");
+	assert(ben_cmp_with_str(b, "a") == 1);
+	assert(ben_cmp_with_str(b, "b") == 0);
+	assert(ben_cmp_with_str(b, "c") == -1);
+	ben_free(b);
+
+	b = ben_bool(0);
+	assert(ben_cmp_with_str(b, "b") != 0);
+	ben_free(b);
+	b = ben_int(1);
+	assert(ben_cmp_with_str(b, "i") != 0);
+	ben_free(b);
+	b = ben_list();
+	assert(ben_cmp_with_str(b, "l") != 0);
+	ben_free(b);
+	b = ben_dict();
+	assert(ben_cmp_with_str(b, "d") != 0);
+	ben_free(b);
 }
 
 void unpack_tests(void)

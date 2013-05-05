@@ -160,6 +160,9 @@ struct bencode *ben_shared_clone(const struct bencode *b);
  */
 int ben_cmp(const struct bencode *a, const struct bencode *b);
 
+/* Same as ben_cmp(), but the second argument is a C string */
+int ben_cmp_with_str(const struct bencode *a, const char *s);
+
 /*
  * Comparison function suitable for qsort(). Uses ben_cmp(), so this can be
  * used to order both integer and string arrays.

@@ -46,6 +46,7 @@ struct ben_encode_ctx {
 #define LONGLONGSIZE 21
 
 static struct bencode *decode_printed(struct ben_decode_ctx *ctx);
+static void inplace_ben_str(struct bencode_str *b, const char *s, size_t len);
 static int resize_dict(struct bencode_dict *d, size_t newalloc);
 static int resize_list(struct bencode_list *list, size_t newalloc);
 static int unpack(const struct bencode *b, struct ben_decode_ctx *ctx,
@@ -458,6 +459,13 @@ int ben_cmp(const struct bencode *a, const struct bencode *b)
 	default:
 		die("Invalid type %c\n", b->type);
 	}
+}
+
+int ben_cmp_with_str(const struct bencode *a, const char *s)
+{
+	struct bencode_str b;
+	inplace_ben_str(&b, s, strlen(s));
+	return ben_cmp(a, (struct bencode *) &b);
 }
 
 int ben_cmp_qsort(const void *a, const void *b)
@@ -1763,6 +1771,7 @@ static void inplace_ben_str(struct bencode_str *b, const char *s, size_t len)
 	b->len = len;
 	b->s = (char *) s;
 }
+
 static void inplace_ben_int(struct bencode_int *i, long long ll)
 {
 	i->type = BENCODE_INT;
