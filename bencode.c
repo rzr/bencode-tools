@@ -264,7 +264,7 @@ static struct bencode *clone_dict(const struct bencode_dict *d)
 		newkey = NULL;
 		newvalue = NULL;
 	}
-	return (struct bencode *) newdict;
+	return newdict;
 
 error:
 	ben_free(newdict);
@@ -289,7 +289,7 @@ static struct bencode *clone_list(const struct bencode_list *list)
 		}
 		newvalue = NULL;
 	}
-	return (struct bencode *) newlist;
+	return newlist;
 
 error:
 	ben_free(newlist);
