@@ -160,6 +160,10 @@ def test_validate():
     assert(validate([1, 2, 3, [True, 'a']], [1, 2, 3, [True, 'a']]))
     assert(validate('foo', 'bar') == False)
 
+    assert(validate(float, 0.0))
+    assert(validate(float, 1.0))
+    assert(validate(float, 1) == False)
+
 def benchmark():
     specification = {'uid': str,
                      'ids': [ZERO_OR_MORE, int],
