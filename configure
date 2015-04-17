@@ -43,6 +43,9 @@ for opt in "$@" ; do
   --without-python)
     no_python="true"
     ;;
+	--build=* | --includedir=* | --mandir=* | --infodir=* | --sysconfdir=* | --localstatedir=* | --libdir=* | --libexecdir=* | --disable-maintainer-mode | --disable-dependency-tracking)
+		echo "ignored"
+		;;
 	--help)
 		echo ""
 		echo "Valid options are:"

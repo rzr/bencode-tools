@@ -1,22 +1,20 @@
 Source: bencode-tools
+Section: unknown
 Priority: optional
 Maintainer: Philippe Coval <rzr@gna.org>
 Build-Depends: debhelper (>= 9), autotools-dev
 Standards-Version: 3.9.5
-Section: libs
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Git: git://anonscm.debian.org/collab-maint/bencode-tools.git
 #Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/bencode-tools.git;a=summary
 
-Package: bencode-tools-dev
-Section: libdevel
-Architecture: any
-Depends: bencode-toolsBROKEN (= ${binary:Version}), ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
-
-Package: bencode-toolsBROKEN
+Package: bencode-tools
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: bencode-tools-doc
+Architecture: all
+Description: documentation for bencode-tools
  <insert long description, indented with spaces>

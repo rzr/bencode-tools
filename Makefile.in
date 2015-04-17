@@ -7,7 +7,7 @@ LIBPATH = {LIBPATH}
 LIBNAME = {LIBNAME}
 SHAREDNAMEFLAG = {SHAREDNAMEFLAG}
 PYTHON = {PYTHON}
-PYTHON_INSTALL_OPTION = {PYTHON_INSTALL_OPTION}
+PYTHON_INSTALL_OPTION = {PYTHON_INSTALL_OPTION} --root $(DESTDIR)
 
 COMPILE_TARGETS = {COMPILE_TARGETS}
 INSTALL_TARGETS = {INSTALL_TARGETS}
@@ -40,10 +40,11 @@ check:	bencodetest
 install-c:
 	@echo "Installing C library"
 	@echo
-	mkdir -p -m 755 "$(PREFIX)/lib" "$(PREFIX)/include/bencodetools" "$(PREFIX)/bin"
-	install -m 644 include/bencodetools/*.h "$(PREFIX)/include/bencodetools/"
-	install -m 644 $(LIBNAME) "$(LIBPATH)"
-	install bencat "$(PREFIX)/bin/"
+	install -d -m 755 "$(DESTDIR)/$(PREFIX)/lib" "$(DESTDIR)/$(PREFIX)/include/bencodetools" "$(DESTDIR)/$(PREFIX)/bin"
+	install -d -m 755 "$(DESTDIR)/$(LIBPATH)"
+	install -m 644 include/bencodetools/*.h "$(DESTDIR)/$(PREFIX)/include/bencodetools/"
+	install -m 644 $(LIBNAME) "$(DESTDIR)/$(LIBPATH)"
+	install bencat "$(DESTDIR)/$(PREFIX)/bin/"
 
 install-python:
 	@echo
