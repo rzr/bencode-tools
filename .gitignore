@@ -6,3 +6,7 @@ Makefile
 bencat
 bencodetest
 build
+*~
+debian/*.log
+debian/*.substvars
+debian/files
